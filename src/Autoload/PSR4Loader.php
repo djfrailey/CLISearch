@@ -40,7 +40,7 @@ class PSR4Loader
 
     private function addBaseDirectories(string $toDirectory)
     {
-        foreach($this->namespaceToDirectoryMap as $namespace => $baseDirectory) {
+        foreach ($this->namespaceToDirectoryMap as $namespace => $baseDirectory) {
             $baseDirectory = rtrim($baseDirectory, '/');
             $baseDirectory .= '/';
             

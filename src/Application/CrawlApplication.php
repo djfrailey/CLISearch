@@ -35,7 +35,7 @@ class CrawlApplication extends ConsoleApplication
 
     public function run()
     {
-        while($this->shouldRun) {
+        while ($this->shouldRun) {
             $stateResult = $this->applicationState->run();
             $this->nextState();
         }
@@ -54,7 +54,7 @@ class CrawlApplication extends ConsoleApplication
             $nextState = $this->createPaginationState();
         }
 
-        if ($this->applicationState instanceof PaginationState){
+        if ($this->applicationState instanceof PaginationState) {
             $nextState = $this->createSearchState();
         }
 

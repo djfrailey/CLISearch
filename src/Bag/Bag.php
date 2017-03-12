@@ -31,7 +31,8 @@ class Bag
         return $value;
     }
 
-    public function has(string $key) {
+    public function has(string $key)
+    {
         return isset($this->data[$key]);
     }
 }

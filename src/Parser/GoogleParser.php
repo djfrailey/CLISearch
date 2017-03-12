@@ -61,7 +61,7 @@ class GoogleParser implements ParserInterface
     {
         $anchorsToExtract = $xPath->query("//h3[@class='r']/a");
 
-        foreach($anchorsToExtract as $element) {
+        foreach ($anchorsToExtract as $element) {
             $textContent = $element->textContent;
             $href = $element->getAttribute('href');
             $href = str_replace('/url?q=', '', $href);

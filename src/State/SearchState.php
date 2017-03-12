@@ -25,7 +25,7 @@ class SearchState extends CrawlApplicationState
         
         $parsedData = $this->parser->parse($searchResponse);
 
-        foreach($parsedData as $data) {
+        foreach ($parsedData as $data) {
             $this->console->writeLine('---');
             $this->console->writeLine($data['title']);
             $this->console->writeLine($data['href']);

@@ -28,7 +28,7 @@ class PaginationState extends CrawlApplicationState
             if ($input === 'y' || $input === 'yes') {
                 $userRequestsNextPage = true;
                 $validInputReceived = true;
-            } else if ($input === 'n' || $input === 'no') {
+            } elseif ($input === 'n' || $input === 'no') {
                 $validInputReceived = true;
             }
         }
