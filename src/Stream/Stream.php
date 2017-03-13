@@ -117,7 +117,7 @@ class Stream
         return $this->modes[$mode] & self::STREAM_WRITABLE;
     }
 
-    public function write($string)
+    public function write($string) : int
     {
         if ($this->isWritable() === false) {
             throw new RuntimeException("Cannot write data to stream. Stream is not writable.");
@@ -131,6 +131,11 @@ class Stream
 
         return $written;
     }
+
+    public function writeLine($string) : int
+    {
+        return $this->write($string . PHP_EOL);
+    }
     
     public function isReadable() 
     {
@@ -138,13 +143,26 @@ class Stream
         return $this->modes[$mode] & self::STREAM_READABLE;
     }
     
-    public function read($length = 1024)
+    public function read($length = 1024) : String
     {
         $read = fread($this->resource, $length);
 
         if ($read === false) {
             throw new RuntimeException("There was an error while reading from the stream.");
         }
+
+        return $read;
+    }
+
+    public function readLine() : String
+    {
+        $read = fgets($this->resource);
+
+        if ($read === false) {
+            throw new RuntimeException("There was an error while reading from the stream.");
+        }
+
+        $read = trim($read);
 
         return $read;
     }

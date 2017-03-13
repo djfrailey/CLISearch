@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace David\Console;
 
+use David\Stream\Stream;
+
 use \InvalidArgumentException;
 use \RuntimeException;
 
@@ -12,66 +14,27 @@ class Console implements ConsoleInterface
     protected $input;
     protected $output;
 
-    public function __construct()
+    public function __construct(Stream $input, Stream $output)
     {
-        $this->input = STDIN;
-        $this->output = STDOUT;
+        $this->input = $input;
+        $this->output = $output;
     }
 
-    public function getInputStream()
+    public function getInputStream() : Stream
     {
         return $this->input;
     }
 
-    public function getOutputStream()
+    public function getOutputStream() : Stream
     {
         return $this->output;
     }
 
-    public function readLine() : string
-    {
-        $this->setInputBlocking(true);
-        $line = fgets($this->input);
-        $line = trim($line);
-        $this->setInputBlocking(false);
-        return $line;
-    }
-
-    public function read(int $length = null) : string
-    {
-        $this->setInputBlocking(true);
-        $data = fread($this->input, $length);
-        $this->setInputBlocking(false);
-        return $data;
-    }
-
     public function ask(string $question) : string
     {
-        $this->write("$question: ");
-        return $this->readLine();
-    }
-
-    public function writeLine(string $line) : int
-    {
-        return $this->write($line."\r\n");
-    }
-
-    public function write(string $message) : int
-    {
-        $totalMessageLength = strlen($message);
-        $written = 0;
-
-        do {
-            $chunk = substr($message, $written);
-            $chunkLength = strlen($chunk);
-            $written += fwrite($this->output, $chunk, $chunkLength);
-        } while ($written < $totalMessageLength);
-        
-        return $written;
-    }
-
-    protected function setInputBlocking(bool $mode)
-    {
-        stream_set_blocking($this->input, $mode);
+        $this->output->write("$question: ");
+        $this->input->setBlocking();
+        $answer = $this->readLine();
+        return $answer;
     }
 }
