@@ -88,6 +88,11 @@ class Stream
         return stream_set_blocking($this->resource, $blocking);
     }
 
+    public function getBlocking() : bool
+    {
+        return (bool) $this->getMetadata('blocked');
+    }
+
     public function isSeekable() : bool
     {
         return $this->getMetadata('seekable');
@@ -147,7 +152,8 @@ class Stream
     {
         $read = fread($this->resource, $length);
 
-        if ($read === false) {
+        if ($this->getBlocking() === false
+            && $read === false) {
             throw new RuntimeException("There was an error while reading from the stream.");
         }
 
@@ -158,7 +164,8 @@ class Stream
     {
         $read = fgets($this->resource);
 
-        if ($read === false) {
+        if ($this->getBlocking() === false
+            && $read === false) {
             throw new RuntimeException("There was an error while reading from the stream.");
         }
 
