@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace David\Stream;
 
 use \RuntimeException;
+use \InvalidArgumentException;
 
 class Stream
 {
@@ -31,6 +32,10 @@ class Stream
 
     public function __construct($resource)
     {
+        if (is_resource($resource) === false) {
+            throw new InvalidArgumentException("Argument passed to constructor must be a resource");
+        }
+
         $this->resource = $resource;
     }
 
