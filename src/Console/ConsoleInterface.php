@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace David\Console;
 
+use David\Stream\Stream;
+
 interface ConsoleInterface
 {
-    public function getInputStream();
-    public function getOutputStream();
+    public function getInputStream() : Stream;
+    public function getOutputStream() : Stream;
     
-    public function readLine() : string;
-    public function read(int $length = null) : string;
     public function ask(string $question) : string;
-
-    public function writeLine(string $line) : int;
-    public function write(string $message) : int;
 }
