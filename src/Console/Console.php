@@ -33,8 +33,8 @@ class Console implements ConsoleInterface
     public function ask(string $question) : string
     {
         $this->output->write("$question: ");
-        $this->input->setBlocking();
-        $answer = $this->readLine();
+        $this->input->setBlocking(true);
+        $answer = $this->input->readLine();
         return $answer;
     }
 }
