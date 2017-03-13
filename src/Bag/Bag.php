@@ -32,9 +32,9 @@ class Bag
         return $this;
     }
 
-    public function get(string $key)
+    public function get(string $key, $default = null)
     {
-        $value = null;
+        $value = $default;
 
         if ($this->has($key)) {
             $value = $this->data[$key];
