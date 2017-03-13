@@ -25,11 +25,13 @@ class SearchState extends CrawlApplicationState
         
         $parsedData = $this->parser->parse($searchResponse);
 
+        $output = $this->console->getOutputStream();
+
         foreach ($parsedData as $data) {
-            $this->console->writeLine('---');
-            $this->console->writeLine($data['title']);
-            $this->console->writeLine($data['href']);
-            $this->console->writeLine('---');
+            $output->writeLine('---');
+            $output->writeLine($data['title']);
+            $output->writeLine($data['href']);
+            $output->writeLine('---');
         }
 
         $nextPage = $this->parser->getNextPage();
