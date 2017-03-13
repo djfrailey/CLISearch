@@ -19,7 +19,6 @@ class PSR4Loader
     {
         $classDirectory = $this->classStringToDirectory($class);
         $classDirectory = $this->addBaseDirectories($classDirectory);
-        $classFile = rtrim($classDirectory, '.php');
         $classFile .= '.php';
 
         if (file_exists($classFile) === true) {
