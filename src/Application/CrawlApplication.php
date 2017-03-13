@@ -36,7 +36,7 @@ class CrawlApplication extends ConsoleApplication
     public function run()
     {
         while ($this->shouldRun) {
-            $stateResult = $this->applicationState->run();
+            $this->applicationState->run();
             $this->nextState();
         }
     }
