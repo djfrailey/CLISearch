@@ -8,8 +8,12 @@ use David\Parser\GoogleParser;
 use David\Seeker\GoogleSeeker;
 use David\Console\Console;
 use David\Application\CrawlApplication;
+use David\Stream\Stream;
 
-$console = new Console();
+$inputStream = new Stream(STDIN);
+$outputStream = new Stream(STDOUT);
+
+$console = new Console($inputStream, $outputStream);
 $seeker = new GoogleSeeker();
 $parser = new GoogleParser();
 $app = new CrawlApplication($console, $seeker, $parser);
