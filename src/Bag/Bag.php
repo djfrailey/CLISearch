@@ -3,10 +3,16 @@
 declare(strict_types=1);
 
 namespace David\Bag;
+use \Generator;
 
 class Bag
 {
     private $data;
+
+    public function __construct(array $data = [])
+    {
+        $this->data = $data;
+    }
 
     public function set(string $key, $value) : Bag
     {
@@ -17,6 +23,12 @@ class Bag
     public function unset(string $key) : Bag
     {
         unset($this->data[$key]);
+        return $this;
+    }
+
+    public function fill(array $values) : Bag
+    {
+        $this->data = $values;
         return $this;
     }
 
@@ -31,8 +43,25 @@ class Bag
         return $value;
     }
 
-    public function has(string $key)
+    public function toGenerator() : Generator
+    {
+        foreach($this->data as $key => $value) {
+            yield [$key => $value];
+        }
+    }
+
+    public function has(string $key) : bool
     {
         return isset($this->data[$key]);
+    }
+
+    public function all() : array
+    {
+        return $this->data;
+    }
+
+    public function count() : int
+    {
+        return count($this->data);
     }
 }
