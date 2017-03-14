@@ -227,6 +227,10 @@ class Stream
             throw new RuntimeException("Cannot write data to stream. Stream is not writable.");
         }
 
+        if (is_null($length) === true) {
+            $length = strlen($string);
+        }
+
         $written = fwrite($this->resource, $string, $length);
 
         if ($written === false) {
@@ -244,8 +248,7 @@ class Stream
     public function writeLine(string $string) : int
     {
         $string = $string  . PHP_EOL;
-        $length = strlen($string);
-        return $this->write($string, $length);
+        return $this->write($string);
     }
     
     /**
