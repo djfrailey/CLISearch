@@ -117,6 +117,8 @@ class CrawlApplication
                 $nextPage = 0;
                 $this->setInputState(self::INPUT_STATE_SEARCH);
             }
+        } else {
+            $this->setInputState(self::INPUT_STATE_SEARCH);
         }
 
         $this->searchParams->set('page', $nextPage);
