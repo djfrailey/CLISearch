@@ -223,12 +223,13 @@ class Stream
      * @throws RuntimeException if an error occurs while writing to the stream.
      * @return int              The number of bytes written to the stream.
      */
+    public function write(string $string, int $length = null) : int
     {
         if ($this->isWritable() === false) {
             throw new RuntimeException("Cannot write data to stream. Stream is not writable.");
         }
 
-        $written = fwrite($this->resource, $string);
+        $written = fwrite($this->resource, $string, $length);
 
         if ($written === false) {
             throw new RuntimeException("There was an error while writing to the stream.");
