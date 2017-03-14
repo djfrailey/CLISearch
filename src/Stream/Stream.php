@@ -78,6 +78,9 @@ class Stream
      * @throws  RuntimeException is thrown if reading the stream contents fails.
      * @return string
      */
+    public function __toString() : String
+    {
+        return $this->getContents();
     }
 
     /**
