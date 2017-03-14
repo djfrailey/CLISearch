@@ -65,15 +65,15 @@ class Bag
         return $this;
     }
 
-    public function unsetAll(array $values) : Bag
     /**
      * Takes an array of names and rmeoves them from the bag.
      *
      * @param  array  $keys
      * @return Bag
      */
+    public function unsetAll(array $keys) : Bag
     {
-        foreach($values as $key => $value) {
+        foreach ($keys as $key) {
             unset($this->data[$key]);
         }
 
