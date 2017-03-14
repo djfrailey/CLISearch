@@ -20,9 +20,27 @@ class Bag
         return $this;
     }
 
+    public function setAll(array $values) : Bag
+    {
+        foreach($values as $key => $value) {
+            $this->data[$key] = $value;
+        }
+
+        return $this;
+    }
+
     public function unset(string $key) : Bag
     {
         unset($this->data[$key]);
+        return $this;
+    }
+
+    public function unsetAll(array $values) : Bag
+    {
+        foreach($values as $key => $value) {
+            unset($this->data[$key]);
+        }
+
         return $this;
     }
 
