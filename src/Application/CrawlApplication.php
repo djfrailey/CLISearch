@@ -5,13 +5,12 @@ declare(strict_types=1);
 namespace David\Application;
 
 use David\Parser\ParserInterface;
-use David\Console\Console;
 use David\Seeker\Seeker;
+use David\Console\ConsoleInterface;
 use David\Bag\Bag;
-use David\State\CrawlApplicationState;
 use \Generator;
 
-class CrawlApplication extends ConsoleApplication
+class CrawlApplication
 {
     /**
      * Search input state identifier.
@@ -53,9 +52,12 @@ class CrawlApplication extends ConsoleApplication
      */
     private $seeker;
 
-    public function __construct(Console $console, Seeker $seeker, ParserInterface $parser)
-    {
-        parent::__construct($console);
+    public function __construct(
+        ConsoleInterface $console,
+        Seeker $seeker,
+        ParserInterface $parser
+    ) {
+    
         $this->seeker = $seeker;
         $this->parser = $parser;
         $this->searchParams = new Bag();
