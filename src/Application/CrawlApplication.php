@@ -46,6 +46,12 @@ class CrawlApplication
     private $parser;
 
     /**
+     * Variable reference to the console representation.
+     * @var ConsoleInterface
+     */
+    private $console;
+
+    /**
      *
      * Variable reference to the crawlers current seeker.
      * @var SeekerInterface
@@ -57,7 +63,7 @@ class CrawlApplication
         Seeker $seeker,
         ParserInterface $parser
     ) {
-    
+        $this->console = $console;
         $this->seeker = $seeker;
         $this->parser = $parser;
         $this->searchParams = new Bag();
