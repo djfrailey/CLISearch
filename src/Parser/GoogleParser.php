@@ -11,19 +11,19 @@ use \DOMNodeList;
 
 class GoogleParser implements ParserInterface
 {
-    protected $nextPage = 0;
-
     /**
      * The next page offset.
      *
      * @var integer
      */
+    private $nextPage;
+
     /**
      * @inheritDoc
      */
     public function parse(string $responseBody) : Generator
     {
-        $this->parsedResults = [];
+        $this->nextPage = 0;
 
         libxml_use_internal_errors(true);
         
