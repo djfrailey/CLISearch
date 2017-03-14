@@ -175,12 +175,20 @@ class Stream
      * @throws RuntimeException if the stream is not seekable.
      * @return bool True if the seek is successful. False on failure.
      */
+    public function seek(int $offset, int $whence = SEEK_SET) : bool
     {
         if ($this->isSeekable() === false) {
             throw new RuntimeException("Stream is not seekable.");
         }
 
-        return fseek($this->resource, $$offset, $whence);
+        $didSeek = false;
+        $seekResult = fseek($this->resource, $$offset, $whence);
+
+        if ($seekResult === 0) {
+            $didSeek = true;
+        }
+
+        return $didSeek;
     }
 
     /**
