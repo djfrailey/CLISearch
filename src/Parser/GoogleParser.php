@@ -13,6 +13,14 @@ class GoogleParser implements ParserInterface
 {
     protected $nextPage = 0;
 
+    /**
+     * The next page offset.
+     *
+     * @var integer
+     */
+    /**
+     * @inheritDoc
+     */
     public function parse(string $responseBody) : Generator
     {
         $this->parsedResults = [];
@@ -28,6 +36,12 @@ class GoogleParser implements ParserInterface
         yield from $this->extractAnchorTags($xPath);
     }
 
+    /**
+     * Extracts the next page offset from the DOM.
+     *
+     * @param  DOMXPath $xPath
+     * @return int
+     */
     private function extractNextPage(DOMXPath $xPath) : int
     {
         $nextPageAnchorList = $xPath->query("//a[@class='fl']");
@@ -57,6 +71,12 @@ class GoogleParser implements ParserInterface
         return $nextPage;
     }
 
+    /**
+     * Extracts all anchor tags pertaining to search results from the DOM
+     *
+     * @param  DOMXPath $xPath
+     * @return Generator
+     */
     private function extractAnchorTags(DOMXPath $xPath) : Generator
     {
         $anchorsToExtract = $xPath->query("//h3[@class='r']/a");
@@ -70,6 +90,9 @@ class GoogleParser implements ParserInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getNextPage() : int
     {
         return $this->nextPage;

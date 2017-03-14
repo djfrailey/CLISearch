@@ -11,7 +11,17 @@ use \RuntimeException;
 
 class Console implements ConsoleInterface
 {
+
+    /**
+     * Reference to the current input stream.
+     * @var Stream
+     */
     protected $input;
+
+    /**
+     * Reference to the current output stream.
+     * @var Stream
+     */
     protected $output;
 
     public function __construct(Stream $input, Stream $output)
@@ -20,16 +30,25 @@ class Console implements ConsoleInterface
         $this->output = $output;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getInputStream() : Stream
     {
         return $this->input;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getOutputStream() : Stream
     {
         return $this->output;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function ask(string $question) : string
     {
         $this->output->write("$question: ");

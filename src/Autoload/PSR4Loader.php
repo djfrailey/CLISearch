@@ -1,12 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 
 namespace David\Autoload;
 
+/**
+ * Simple class to handle the autoloading of PHP files.
+ */
 class PSR4Loader
 {
+
+    /**
+     * The base directory in which to look for dependencies.
+     * @var string
+     */
     private $baseDirectory;
+
+    /**
+     * A map used to hold namespaces to directories.
+     * @var array
+     */
     private $namespaceToDirectoryMap = [];
 
     public function __construct(string $baseDirectory)
@@ -15,6 +28,10 @@ class PSR4Loader
         spl_autoload_register($callback = [$this, 'load'], $throw = false);
     }
 
+    /**
+     * Attempts to load the requested class.
+     * @param  string $class Fully qualified class name of the requested class.
+     */
     public function load(string $class)
     {
         $classDirectory = $this->classStringToDirectory($class);
@@ -37,6 +54,11 @@ class PSR4Loader
         return str_replace("\\", "/", $class);
     }
 
+    /**
+     * Adds the base directory and maps any namespace names to
+     * their corresponding directories listed in $namespaceToDirectoryMap
+     * @param string $toDirectory The mutated class directory
+     */
     private function addBaseDirectories(string $toDirectory)
     {
         foreach ($this->namespaceToDirectoryMap as $namespace => $baseDirectory) {
