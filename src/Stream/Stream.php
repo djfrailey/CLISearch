@@ -107,11 +107,11 @@ class Stream
         return $copy;
     }
 
-    public function getSize()
     /**
      * Attempts to seek to the end of a stream and report the total size.
      * @return int
      */
+    public function getSize() : int
     {
         $size = null;
 
@@ -167,7 +167,6 @@ class Stream
         return $this->getMetadata('seekable');
     }
 
-    public function seek($offset, $whence = SEEK_SET)
     /**
      * Attempts to seek to the specified position in the stream.
      * @param  int $offset The byte offset to try to seek to.
@@ -214,7 +213,6 @@ class Stream
         return $this->modes[$mode] & self::STREAM_WRITABLE;
     }
 
-    public function write($string) : int
     /**
      * Writes the given string to the stream.
      * @param  string   $string The string of data to write to the stream.
@@ -238,20 +236,22 @@ class Stream
         return $written;
     }
 
-    public function writeLine($string) : int
     /**
      * Writes the given string followed by a newline to the stream.
      * @param  string $string The string of data to write.
      * @return int The number of bytes written to the stream.
      */
+    public function writeLine(string $string) : int
     {
-        return $this->write($string . PHP_EOL);
+        $string = $string  . PHP_EOL;
+        $length = strlen($string);
+        return $this->write($string, $length);
     }
     
-    public function isReadable() 
     /**
      * @return boolean True if the stream is readable.
      */
+    public function isReadable()
     {
         $mode = $this->getMetadata('mode');
         return $this->modes[$mode] & self::STREAM_READABLE;
