@@ -46,7 +46,7 @@ class Bag
      */
     public function setAll(array $values) : Bag
     {
-        foreach($values as $key => $value) {
+        foreach ($values as $key => $value) {
             $this->data[$key] = $value;
         }
 
@@ -116,7 +116,7 @@ class Bag
      */
     public function toGenerator() : Generator
     {
-        foreach($this->data as $key => $value) {
+        foreach ($this->data as $key => $value) {
             yield [$key => $value];
         }
     }

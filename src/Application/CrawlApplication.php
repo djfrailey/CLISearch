@@ -76,14 +76,13 @@ class CrawlApplication
     public function run()
     {
         while ($this->shouldRun) {
-            
             switch ($this->inputState) {
                 case self::INPUT_STATE_SEARCH:
                     $this->handleSearchInputLoop();
-                break;
+                    break;
                 case self::INPUT_STATE_PAGINATE:
                         $this->handlePaginateInputLoop();
-                break;
+                    break;
             }
 
             $searchTerm = $this->searchParams->get('searchTerm', '');
