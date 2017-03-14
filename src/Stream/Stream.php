@@ -65,13 +65,14 @@ class Stream
         $this->resource = $resource;
     }
 
-    public function __toString()
     /**
      * Ensures the resource has been closed when the object is garbage collected.
      */
+    public function __destruct()
     {
-        $this->seek(0, SEEK_SET);
-        return stream_get_contents($this->resource);
+        $this->close();
+    }
+
     /**
      * Seeks to the beginning of the stream and flushes its contents.
      * @throws  RuntimeException is thrown if reading the stream contents fails.
