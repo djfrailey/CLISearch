@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace David\Bag;
+namespace Djfrailey\Bag;
 
 use \Generator;
 

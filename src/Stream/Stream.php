@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace David\Stream;
+namespace Djfrailey\Stream;
 
 use \RuntimeException;
 use \InvalidArgumentException;

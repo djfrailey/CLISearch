@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace David\Seeker;
+namespace Djfrailey\Seeker;
 
 abstract class Seeker
 {

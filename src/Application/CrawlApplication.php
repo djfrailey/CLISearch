@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace David\Application;
+namespace Djfrailey\Application;
 
-use David\Parser\ParserInterface;
-use David\Seeker\Seeker;
-use David\Console\ConsoleInterface;
-use David\Bag\Bag;
+use Djfrailey\Parser\ParserInterface;
+use Djfrailey\Seeker\Seeker;
+use Djfrailey\Console\ConsoleInterface;
+use Djfrailey\Bag\Bag;
 use \Generator;
 
 class CrawlApplication

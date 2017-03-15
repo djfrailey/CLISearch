@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace David\Parser;
+namespace Djfrailey\Parser;
 
 use \Generator;
 use \DOMXPath;

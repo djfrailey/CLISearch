@@ -2,7 +2,7 @@
 
 declare (strict_types=1);
 
-namespace David\Autoload;
+namespace Djfrailey\Autoload;
 
 /**
  * Simple class to handle the autoloading of PHP files.

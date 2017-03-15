@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace David\Console;
+namespace Djfrailey\Console;
 
-use David\Stream\Stream;
+use Djfrailey\Stream\Stream;
 
 interface ConsoleInterface
 {
