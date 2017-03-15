@@ -38,15 +38,15 @@ class Stream
      * @var array
      */
     protected $modes = [
-        'r'  => self ::STREAM_READABLE,
+        'r'  => self::STREAM_READABLE,
         'r+' => self::STREAM_READABLE | self::STREAM_WRITABLE,
-        'w'  => self ::STREAM_WRITABLE,
+        'w'  => self::STREAM_WRITABLE,
         'w+' => self::STREAM_READABLE | self::STREAM_WRITABLE,
-        'a'  => self ::STREAM_READABLE,
+        'a'  => self::STREAM_READABLE,
         'a+' => self::STREAM_READABLE | self::STREAM_WRITABLE,
-        'x'  => self ::STREAM_READABLE,
+        'x'  => self::STREAM_READABLE,
         'x+' => self::STREAM_READABLE | self::STREAM_WRITABLE,
-        'c'  => self ::STREAM_WRITABLE,
+        'c'  => self::STREAM_WRITABLE,
         'c+' => self::STREAM_READABLE | self::STREAM_WRITABLE,
         'wb' => self::STREAM_WRITABLE | self::STREAM_BINARY,
         'rb' => self::STREAM_READABLE | self::STREAM_BINARY,

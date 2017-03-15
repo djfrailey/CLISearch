@@ -26,7 +26,7 @@ class Console implements ConsoleInterface
 
     public function __construct(Stream $input, Stream $output)
     {
-        $this->input = $input;
+        $this->input  = $input;
         $this->output = $output;
     }
 

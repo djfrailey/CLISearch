@@ -63,9 +63,9 @@ class CrawlApplication
         Seeker $seeker,
         ParserInterface $parser
     ) {
-        $this->console = $console;
-        $this->seeker = $seeker;
-        $this->parser = $parser;
+        $this->console      = $console;
+        $this->seeker       = $seeker;
+        $this->parser       = $parser;
         $this->searchParams = new Bag();
     }
 

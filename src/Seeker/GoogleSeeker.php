@@ -8,8 +8,8 @@ class GoogleSeeker extends Seeker
 {
     public function getSeekEndpoint(string $term, int $page = 0) : string
     {
-        $params = [
-            'q' => $term,
+        $params     =  [
+            'q'     => $term,
             'start' => $page
         ];
 
