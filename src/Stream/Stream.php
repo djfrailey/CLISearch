@@ -193,7 +193,6 @@ class Stream
     /**
      * Returns the streams internal pointer back to the beginning.
      * @throws  RuntimeException if the stream is not seekable.
-     * @return [type] [description]
      */
     public function rewind()
     {
